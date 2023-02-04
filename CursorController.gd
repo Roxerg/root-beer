@@ -1,9 +1,9 @@
 extends Spatial
 
 
-onready var camera = get_node("/root/Level/Camera")
+onready var camera = get_node("/root/Room/Camera")
 var mouse_held = false
-
+var hitWall = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

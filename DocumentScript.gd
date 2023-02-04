@@ -1,6 +1,5 @@
 extends MeshInstance
 
-
 var currently_focused = false
 
 func _ready():
@@ -9,7 +8,6 @@ func _ready():
 func _on_Area_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			print(CursorController.docs_layer)
 			currently_focused = true
 		elif event.button_index == BUTTON_LEFT and not event.pressed:
 			CursorController.update_docs_layers(self)
@@ -22,15 +20,16 @@ func _on_Area_input_event(camera, event, position, normal, shape_idx):
 
 func _process(delta):
 	if currently_focused and CursorController.mouse_held:
-		var viewport_pos = get_viewport().get_mouse_position()
-		var from = CursorController.camera.project_ray_origin(viewport_pos)
-		var to = from + CursorController.camera.project_ray_normal(viewport_pos) * 100
-		var cursorPos = Plane(Vector3.UP, transform.origin.y).intersects_ray(from, to)
-		self.global_transform.origin.x = lerp(self.global_transform.origin.x, cursorPos.x, delta*25)
-		self.global_transform.origin.z = lerp(self.global_transform.origin.z, cursorPos.z, delta*25)
-		self.global_transform.origin.y=1
+		if not CursorController.hitWall:
+			print(self.global_transform.origin)
+			var viewport_pos = get_viewport().get_mouse_position()
+			var from = CursorController.camera.project_ray_origin(viewport_pos)
+			var to = from + CursorController.camera.project_ray_normal(viewport_pos) * 1000
+			var cursorPos = Plane(Vector3.UP, self.global_transform.origin.y).intersects_ray(from, to)
+			print(cursorPos)
+			self.global_transform.origin.x = lerp(self.global_transform.origin.x, cursorPos.x, delta*25)
+			self.global_transform.origin.z = lerp(self.global_transform.origin.z, cursorPos.z, delta*25)
+			self.global_transform.origin.y=1
 	else:
 		currently_focused = false
 	
-	
-		
