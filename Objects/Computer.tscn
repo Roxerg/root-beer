@@ -1,21 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Models/PC_Low.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Assets/textures/PC_Low_None_Metallic.png" type="Texture" id=2]
-[ext_resource path="res://Assets/textures/PC_Low_None_Normal.png" type="Texture" id=3]
-[ext_resource path="res://Assets/textures/PC_Low_None_Roughness.png" type="Texture" id=4]
-[ext_resource path="res://Assets/textures/PC_Low_None_BaseColor.png" type="Texture" id=5]
+[ext_resource path="res://Assets/textures/PC_Low_None_Metallic (1).png" type="Texture" id=2]
+[ext_resource path="res://Assets/textures/PC_Low_None_Roughness (1).png" type="Texture" id=3]
+[ext_resource path="res://Assets/textures/PC_Low_None_Normal (1).png" type="Texture" id=4]
+[ext_resource path="res://Assets/textures/PC_Low_None_AO.png" type="Texture" id=5]
+[ext_resource path="res://Assets/textures/PC_Low_None_BaseColor (1).png" type="Texture" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 5 )
+albedo_texture = ExtResource( 6 )
 metallic_texture = ExtResource( 2 )
-roughness_texture = ExtResource( 4 )
+roughness_texture = ExtResource( 3 )
 normal_enabled = true
 normal_scale = 1.0
-normal_texture = ExtResource( 3 )
+normal_texture = ExtResource( 4 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 5 )
+ao_on_uv2 = false
+ao_texture_channel = 0
 
 [node name="Computer" type="Spatial"]
 
 [node name="ComputerModel" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997053, 1.88429 )
+fov = 90.0

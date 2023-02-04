@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://cat.jpg" type="Texture" id=1]
-[ext_resource path="res://DocumentScript.gd" type="Script" id=2]
 
 [sub_resource type="QuadMesh" id=4]
 size = Vector2( 6, 10 )
@@ -18,7 +17,6 @@ extents = Vector3( 3.26616, 5.13402, 0.280406 )
 transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0 )
 mesh = SubResource( 4 )
 material/0 = SubResource( 6 )
-script = ExtResource( 2 )
 
 [node name="Area" type="Area" parent="MeshInstance"]
 
