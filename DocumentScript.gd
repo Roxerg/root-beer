@@ -21,8 +21,9 @@ func _process(delta):
 		var from = CursorController.camera.project_ray_origin(viewport_pos)
 		var to = from + CursorController.camera.project_ray_normal(viewport_pos) * 100
 		var cursorPos = Plane(Vector3.UP, transform.origin.y).intersects_ray(from, to)
-		self.global_transform.origin.x = cursorPos.x
-		self.global_transform.origin.z = cursorPos.z
+		self.global_transform.origin.x = lerp(self.global_transform.origin.x, cursorPos.x, delta*25)
+		self.global_transform.origin.z = lerp(self.global_transform.origin.z, cursorPos.z, delta*25)
+		
 	else:
 		currently_focused = false
 	
