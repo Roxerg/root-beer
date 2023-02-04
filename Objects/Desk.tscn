@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Models/Desk.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/textures/Low_Desk_Metallic.png" type="Texture" id=2]
+[ext_resource path="res://Assets/textures/Low_Desk_AO.png" type="Texture" id=3]
+[ext_resource path="res://Assets/textures/Low_Desk_Normal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/textures/Low_Desk_BaseMap.png" type="Texture" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 5 )
+metallic_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 3 )
+ao_on_uv2 = false
+ao_texture_channel = 0
 
 [node name="Desk" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Desk" type="MeshInstance" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )

@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Models/PC_Low.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/textures/PC_Low_None_Metallic.png" type="Texture" id=2]
 [ext_resource path="res://Assets/textures/PC_Low_None_Normal.png" type="Texture" id=3]
 [ext_resource path="res://Assets/textures/PC_Low_None_Roughness.png" type="Texture" id=4]
+[ext_resource path="res://Assets/textures/PC_Low_None_BaseColor.png" type="Texture" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 5 )
 metallic_texture = ExtResource( 2 )
 roughness_texture = ExtResource( 4 )
 normal_enabled = true

@@ -1,6 +1,6 @@
 extends Camera
 
-var speed = 0.3
+var speed = 0.6
 var edge_margin = 50
 var screen_size = Vector2(0,0)
 var y_rot = 0
