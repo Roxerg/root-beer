@@ -1,7 +1,10 @@
 extends Spatial
 
 onready var camera = get_node("/root/Level/Camera")
+
+var is_win = false
 var mouse_held = false
+
 var suspectList =  [
 	"Gonker Monker",
 	"Grunkle Bob",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Models/PC_Low.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/textures/PC_Low_None_Metallic (1).png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/textures/PC_Low_None_AO.png" type="Texture" id=5]
 [ext_resource path="res://Assets/textures/PC_Low_None_BaseColor (1).png" type="Texture" id=6]
 [ext_resource path="res://Scenes/SuspectBoard.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/WIN.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 6 )
@@ -22,6 +23,9 @@ ao_on_uv2 = false
 ao_texture_channel = 0
 
 [node name="Computer" type="Spatial"]
+
+[node name="Spatial" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.405121, 1.28497, 1.08477 )
 
 [node name="ComputerModel" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )

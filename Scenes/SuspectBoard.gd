@@ -68,7 +68,7 @@ func _process(delta):
 		
 		if prev_len == 0:
 			var last_info = suspectInfo[last_sus_name]
-			last_sus_obj.translation = last_info["list_translation"]
+			suspectInfo[last_sus_name]["node"].translation = last_info["list_translation"]
 			connection_vertical_coord -= connection_vertical_step
 			last_info["in_list"] = true
 			last_sus_name = null
