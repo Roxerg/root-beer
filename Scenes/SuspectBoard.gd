@@ -15,7 +15,11 @@ const sus_scale = 0.6
 var string_chain = []
 
 var prev_len = 0
-var last_sus = null
+var last_sus_name = null
+var last_sus_obj = null
+
+var suspectInfo = {}
+
 var connection_vertical_coord = -3
 var connection_vertical_step = 0.6
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +35,7 @@ func _ready():
 		sus.translation.z = free_z
 		sus.scale = Vector3(sus_scale, sus_scale, sus_scale)
 		free_z += z_increment
-		CursorController.suspectInfo[suspect] = {
+		suspectInfo[suspect] = {
 			"name": suspect,
 			"list_translation" : sus.translation,
 			"node": sus,
@@ -47,7 +51,7 @@ func _ready():
 		sus.translation.y = y_pos
 		sus.scale = Vector3(sus_scale, sus_scale, sus_scale)
 		connection_vertical_coord += connection_vertical_step
-		CursorController.suspectInfo[suspect] = {
+		suspectInfo[suspect] = {
 			"name": suspect,
 			"list_translation" : sus.translation,
 			"node": sus,
@@ -63,42 +67,42 @@ func _process(delta):
 		prev_len = CursorController.suspectChain.size()
 		
 		if prev_len == 0:
-			var last_info = CursorController.suspectInfo[last_sus.suspect_name]
-			last_sus.translation = last_info["list_translation"]
+			var last_info = suspectInfo[last_sus_name]
+			last_sus_obj.translation = last_info["list_translation"]
 			connection_vertical_coord -= connection_vertical_step
 			last_info["in_list"] = true
-			last_sus = null
+			last_sus_name = null
 			if string_chain.size() != 0:
 				var last_string = string_chain.pop_back()
 				self.remove_child(last_string)
 				last_string.queue_free()
 		
-		var latest = null
+		var latest_name = null
 		var latest_info = null
 		if prev_len != 0:
-			latest = CursorController.suspectChain[-1]	
-			latest_info = CursorController.suspectInfo[latest.suspect_name] 
+			latest_name = CursorController.suspectChain[-1]	
+			latest_info = suspectInfo[latest_name] 
 		
 		if latest_info != null and latest_info["in_list"]:
-			latest.translation.x = 3
-			latest.translation.z = connection_vertical_coord
+			suspectInfo[latest_name]["node"].translation.x = 3
+			suspectInfo[latest_name]["node"].translation.z = connection_vertical_coord
 			connection_vertical_coord += connection_vertical_step
 			latest_info["in_list"] = false
 			
 			
-			if last_sus != null:
+			if last_sus_name != null:
 				var conn = string_object.instance()
 				self.add_child(conn)
-				conn.translation = latest.translation
-				conn.translation.y = latest.translation.y - 0.3
-				conn.node2 = latest
-				conn.node1 = last_sus
+				conn.translation = suspectInfo[latest_name]["node"].translation
+				conn.translation.y = suspectInfo[latest_name]["node"].translation.y - 0.3
+				conn.node2 = suspectInfo[latest_name]["node"]
+				conn.node1 = suspectInfo[last_sus_name]["node"]
 				string_chain.push_back(conn)
 			
-			last_sus = latest
-		elif last_sus != null:
-			var last_info = CursorController.suspectInfo[last_sus.suspect_name] 
-			last_sus.translation = last_info["list_translation"]
+			last_sus_name = latest_name
+		elif last_sus_name != null:
+			var last_info = suspectInfo[last_sus_name]
+			suspectInfo[last_sus_name]["node"].translation = last_info["list_translation"]
 			connection_vertical_coord -= connection_vertical_step
 			last_info["in_list"] = true
 			if string_chain.size() > 0:
@@ -106,11 +110,11 @@ func _process(delta):
 				self.remove_child(conn)
 				conn.queue_free()
 			if CursorController.suspectChain.size() > 0:
-				last_sus = CursorController.suspectChain[-1]
+				last_sus_name = CursorController.suspectChain[-1]
 			else:
-				last_sus = null
+				last_sus_name = null
 		
-		if last_sus != null:
-			print("last_sus: ", last_sus.suspect_name)
+		if last_sus_name != null:
+			print("last_sus: ", last_sus_name)
 		print("stringeroo", string_chain.size())
 			
