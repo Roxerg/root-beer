@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/ConnectionCylinder.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.462745, 0.0235294, 0.0235294, 1 )
+
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 3 )
+top_radius = 0.2
+bottom_radius = 0.2
+
+[node name="ConnectionCyl" type="Spatial"]
+transform = Transform( 1, 3.72529e-09, -2.22045e-16, -3.72529e-09, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 8.82253e-24, -3.85645e-31, 0, -4.37114e-08, -1, -8.82253e-24, 1, -4.37114e-08, -5.29396e-23, -1.79301e-07, -3.00818 )
+mesh = SubResource( 2 )

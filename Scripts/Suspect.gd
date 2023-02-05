@@ -26,3 +26,13 @@ func generate_word(chars, length):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Area_input_event(camera, event, position, normal, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			if CursorController.suspectChain.size() > 0 and CursorController.suspectChain[-1] == self:
+				CursorController.suspectChain.pop_back()
+			elif not CursorController.suspectChain.has(self):
+				CursorController.suspectChain.push_back(self)
+			print(CursorController.suspectChain.size())
