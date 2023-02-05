@@ -4,10 +4,7 @@ extends Spatial
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
 onready var label = get_node("Label3D")
-
-
 var suspect_connections = []
 var suspect_name = "Guy McGyverson"
 
@@ -36,10 +33,10 @@ func generate_word(chars, length):
 func _on_Area_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			if CursorController.suspectChain.size() > 0 and CursorController.suspectChain[-1] == self:
+			if CursorController.suspectChain.size() > 0 and CursorController.suspectChain[-1] == self.suspect_name:
 				var sus = CursorController.suspectChain.pop_back()
 				CursorController.suspectList.push_back(sus)
-			elif not CursorController.suspectChain.has(self):
-				CursorController.suspectList.erase(self)
-				CursorController.suspectChain.push_back(self)
+			elif not CursorController.suspectChain.has(self.suspect_name):
+				CursorController.suspectList.erase(self.suspect_name)
+				CursorController.suspectChain.push_back(self.suspect_name)
 			print(CursorController.suspectChain.size())
