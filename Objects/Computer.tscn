@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Models/PC_Low.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/textures/PC_Low_None_Metallic (1).png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/textures/PC_Low_None_Normal (1).png" type="Texture" id=4]
 [ext_resource path="res://Assets/textures/PC_Low_None_AO.png" type="Texture" id=5]
 [ext_resource path="res://Assets/textures/PC_Low_None_BaseColor (1).png" type="Texture" id=6]
+[ext_resource path="res://Scenes/SuspectBoard.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 6 )
@@ -29,3 +30,6 @@ material/0 = SubResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997053, 1.88429 )
 fov = 90.0
+
+[node name="SuspectBoard" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0.0377327, 0.965397, 1.00436 )
