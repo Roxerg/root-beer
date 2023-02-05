@@ -1,9 +1,20 @@
 extends Spatial
 
-func _input(event):
-	if event is InputEventKey and event.is_pressed() and event.scancode == KEY_1:
-		get_tree().change_scene("Scenes/Room.tscn")
-	elif event is InputEventKey and event.is_pressed() and event.scancode == KEY_2:
-		get_tree().change_scene("Scenes/Computer.tscn")
-	elif event is InputEventKey and event.is_pressed() and event.scancode == KEY_3:
-		get_tree().change_scene("res://Scenes/Desktop.tscn")
+
+
+var sound_player
+var timer
+
+func _ready():
+	
+	timer = get_node("Timer")
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.start()
+
+
+
+func _on_Timer_timeout():
+	sound_player = get_node("TypingSound")
+	sound_player.play()
+
+
