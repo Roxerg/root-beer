@@ -1,7 +1,6 @@
 extends Spatial
 
-
-# onready var camera = get_node("/root/Level/Camera")
+onready var camera = get_node("/root/Level/Camera")
 var mouse_held = false
 var suspectChain = []
 var suspectInfo = {}

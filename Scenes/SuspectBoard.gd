@@ -83,6 +83,7 @@ func _process(delta):
 				var conn = string_object.instance()
 				self.add_child(conn)
 				conn.translation = latest.translation
+				conn.translation.y = latest.translation.y - 0.3
 				conn.node2 = latest
 				conn.node1 = last_sus
 				string_chain.push_back(conn)
