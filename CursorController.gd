@@ -21,14 +21,6 @@ var suspectInfo = {}
 # var a = 2
 # var b = "text"
 
-var docs_layer = []
-var top_y = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_mouse_button_pressed(1):
