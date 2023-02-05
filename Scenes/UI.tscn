@@ -10,10 +10,11 @@ default_font = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Controls" type="Label" parent="."]
-margin_top = 368.0
+margin_top = 309.0
 margin_right = 522.0
-margin_bottom = 592.0
+margin_bottom = 598.0
 theme = SubResource( 1 )
 text = "1: Room
 2: Computer
-3: Archives"
+3: Documents
+4: Archives"
