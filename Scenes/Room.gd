@@ -1,5 +1,6 @@
 extends Spatial
 
+<<<<<<< HEAD
 var light
 
 func _ready():
@@ -17,3 +18,8 @@ func is_pointing_at_object():
 	# Code to determine if mouse is pointing at object
 	# Return true or false
 	return true
+=======
+func _input(event):
+	if event is InputEventKey and event.is_pressed() and event.scancode == KEY_2:
+		get_tree().change_scene("Scenes/Computer.tscn")
+>>>>>>> jacob
