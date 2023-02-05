@@ -5,16 +5,13 @@ onready var camera = get_node("/root/Level/Camera")
 var is_win = false
 var mouse_held = false
 
-var suspectList =  [
-	"Gonker Monker",
-	"Grunkle Bob",
-	"Jerry",
-	"Smorg Smorgosbord",
-	"Blooper Blonser",
-	"Fondeler Franz",
-	"Marty McFart"
-]
+var suspectList =  []
 var suspectChain = []
+var winChain = [
+	"Whiskers",
+	"Socks",
+	"Fluffy"
+]
 var suspectInfo = {}
 
 # Declare member variables here. Examples:
@@ -27,14 +24,11 @@ func _process(delta):
 		mouse_held = true
 	else:
 		mouse_held = false
+		
+	if suspectChain == winChain:
+		is_win = true
 
 func add_new_suspect_name(sus_name):
 	if not suspectList.has(sus_name):
 		suspectList.append(sus_name)
 
-func update_docs_layers(doc):
-	docs_layer.erase(doc)
-	docs_layer.append(doc)
-	for idx in len(docs_layer):
-		docs_layer[idx].global_transform.origin.y = idx*0.001
-	
