@@ -12,16 +12,6 @@ const x_pos = -3
 const y_pos = 0
 const sus_scale = 0.6
 
-var suspects = [
-	"Gonker Monker",
-	"Grunkle Bob",
-	"Jerry",
-	"Smorg Smorgosbord",
-	"Blooper Blonser",
-	"Fondeler Franz",
-	"Marty McFart"
-]
-
 var string_chain = []
 
 var prev_len = 0
@@ -32,10 +22,10 @@ var connection_vertical_step = 0.6
 func _ready():
 	prev_len = CursorController.suspectChain.size()
 	pass # Replace with function body.
-	for suspect in suspects:
+	for suspect in CursorController.suspectList:
 		var sus = suspect_object.instance()
-		sus.suspect_name = suspect
 		self.add_child(sus)
+		sus.set_sus_name(suspect)
 		sus.translation.x = x_pos
 		sus.translation.y = y_pos
 		sus.translation.z = free_z
@@ -47,6 +37,23 @@ func _ready():
 			"node": sus,
 			"in_list" : true
 		}
+	for suspect in CursorController.suspectChain:
+		var sus = suspect_object.instance()
+		sus.suspect_name = suspect
+		self.add_child(sus)
+		sus.set_sus_name(suspect)
+		sus.translation.x = 3
+		sus.translation.z = connection_vertical_coord
+		sus.translation.y = y_pos
+		sus.scale = Vector3(sus_scale, sus_scale, sus_scale)
+		connection_vertical_coord += connection_vertical_step
+		CursorController.suspectInfo[suspect] = {
+			"name": suspect,
+			"list_translation" : sus.translation,
+			"node": sus,
+			"in_list" : true
+		}
+		
 		
 
 

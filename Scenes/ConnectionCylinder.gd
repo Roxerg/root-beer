@@ -9,6 +9,7 @@ var node1 = null
 var node2 = null
 onready var mesh = get_node("MeshInstance")
 onready var init_transform = mesh.transform
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
