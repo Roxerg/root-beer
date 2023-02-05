@@ -33,6 +33,10 @@ func _process(delta):
 	else:
 		mouse_held = false
 
+func add_new_suspect_name(sus_name):
+	if not suspectList.has(sus_name):
+		suspectList.append(sus_name)
+
 func update_docs_layers(doc):
 	docs_layer.erase(doc)
 	docs_layer.append(doc)
