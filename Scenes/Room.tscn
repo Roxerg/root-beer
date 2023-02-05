@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Objects/Desk.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Models/Room_Final.obj" type="ArrayMesh" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://Assets/textures/Room_Final_Material.029_Normal.png" type="Texture" id=16]
 [ext_resource path="res://Assets/textures/Room_Final_Material.029_Roughness.png" type="Texture" id=17]
 [ext_resource path="res://Assets/textures/Room_Final_Material.029_Metallic.png" type="Texture" id=18]
-[ext_resource path="res://Scenes/Room.gd" type="Script" id=19]
 [ext_resource path="res://Assets/textures/Low_Lamp_AO.png" type="Texture" id=20]
 [ext_resource path="res://Assets/textures/Low_Fan_AO.png" type="Texture" id=21]
 [ext_resource path="res://Assets/textures/Low_Lamp_Normal.png" type="Texture" id=22]
@@ -85,7 +84,6 @@ albedo_texture = ExtResource( 31 )
 
 [node name="Room" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46, 0 )
-script = ExtResource( 19 )
 
 [node name="Lamp" type="MeshInstance" parent="."]
 transform = Transform( -0.475735, 0, 0.153869, 0, 0.5, 0, -0.153869, 0, -0.475735, -23.7005, -5.83064, 12.7502 )
